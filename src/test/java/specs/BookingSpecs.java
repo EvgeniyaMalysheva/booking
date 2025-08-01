@@ -14,7 +14,6 @@ public class BookingSpecs {
             .log().uri()
             .log().method()
             .log().body()
-//            .log().all()  //todo
             .contentType("application/json");
 
     public static ResponseSpecification ResponseSpec = new ResponseSpecBuilder()

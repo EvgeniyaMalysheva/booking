@@ -130,7 +130,7 @@ public class BookingSteps {
 
     @Step("Удаление бронирования")
     public BookingSteps deleteBookingData(int id) {
-        String tokenValue = createToken();
+        String tokenValue = createToken(); //todo ApiHelper
         given(RequestSpec)
                 .when()
                 .header("Cookie", "token=" + tokenValue)

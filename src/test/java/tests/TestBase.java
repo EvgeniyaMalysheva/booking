@@ -1,9 +1,10 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
-//import config.ConfigReader;
-//import config.ProjectConfiguration;
-//import config.WebConfig;
+import config.BookingConfig;
+import config.ConfigReader;
+import config.ProjectConfiguration;
+import helpers.ApiHelper;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import models.responses.BookingModel;
@@ -15,25 +16,25 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-        protected BookingSteps newBooking = new BookingSteps();
-        protected BookingModel newBookingData = BookingModel.builder().build();
+    protected BookingSteps newBooking = new BookingSteps();
+    protected BookingModel newBookingData = BookingModel.builder().build();
+    protected ApiHelper apiHelper = new ApiHelper();
+    private static final BookingConfig config = ConfigReader.Instance.read();
 
-       @BeforeAll
-        public static void setBrowserParams() {
-           RestAssured.baseURI = "https://restful-booker.herokuapp.com";
-//            ProjectConfiguration projectConfiguration = new ProjectConfiguration(webConfig);
-//            projectConfiguration.webConfig();
-//            projectConfiguration.apiConfig();
-        }
-
-        @BeforeEach
-        public void addAllureSelenideListener() {
-            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        }
-
-        @AfterEach
-        public void сloseDriver() {
-            closeWebDriver();
-        }
+    @BeforeAll
+    public static void setApiParams() {
+        ProjectConfiguration projectConfiguration = new ProjectConfiguration(config);
+        projectConfiguration.apiConfig();
     }
+
+    @BeforeEach
+    public void addAllureSelenideListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+
+    @AfterEach
+    public void сloseDriver() {
+        closeWebDriver();
+    }
+}
 
