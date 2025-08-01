@@ -40,7 +40,7 @@ public class BookingTests extends TestBase {
 
     @Test
     @DisplayName("TC_API_5: Проверка работоспособности (ping) сервиса")
-    void HealthCheckTest() {
+    void healthCheckTest() {
         newBooking.pingService();
     }
 
