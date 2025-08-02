@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @Owner("Evgeniya Malysheva")
-@DisplayName("Запросы информации по бронированиям")
+@DisplayName("Информация по бронированиям")
 public class BookingInfoTests extends TestBase {
 
     @Test
