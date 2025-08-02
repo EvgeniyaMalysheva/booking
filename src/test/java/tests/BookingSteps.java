@@ -1,5 +1,7 @@
 package tests;
 
+import config.BookingConfig;
+import config.ConfigReader;
 import io.qameta.allure.Step;
 import models.requests.LoginBodyModel;
 import models.responses.*;
@@ -14,11 +16,13 @@ import static specs.BookingSpecs.ResponseSpec;
 import static tests.TestData.*;
 
 public class BookingSteps {
+    private static final BookingConfig config = ConfigReader.Instance.read();
 
+    @Step("Получение токена")
     public String createToken() {
-        LoginBodyModel authData = (System.getProperty("restLogin") == null)
-                ? new LoginBodyModel(LOGIN, PASSWORD)
-                : new LoginBodyModel(System.getProperty("restLogin"), System.getProperty("restPass"));
+        LoginBodyModel authData = (System.getProperty("login") == null)
+                ? new LoginBodyModel(config.getLogin(), config.getPassword())
+                : new LoginBodyModel(System.getProperty("login"), System.getProperty("password"));
 
         LoginResponseModel token = given(RequestSpec)
                 .body(authData)
@@ -116,7 +120,7 @@ public class BookingSteps {
 
     @Step("Удаление бронирования")
     public BookingSteps deleteBookingData(int id) {
-        String tokenValue = createToken(); //todo ApiHelper
+        String tokenValue = createToken();
         given(RequestSpec)
                 .when()
                 .header("Cookie", "token=" + tokenValue)

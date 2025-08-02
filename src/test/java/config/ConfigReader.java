@@ -7,11 +7,13 @@ import org.aeonbits.owner.ConfigFactory;
 
         protected static final BookingConfig bookingConfig =
                 ConfigFactory.create(
-                        BookingConfig.class,
-                        System.getProperties()
+                        BookingConfig.class
+                        //System.getProperties()
                 );
 
         public BookingConfig read() {
             return bookingConfig;
         }
 }
+
+

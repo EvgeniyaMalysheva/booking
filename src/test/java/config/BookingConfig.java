@@ -3,7 +3,6 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "system:properties",
         "classpath:local.properties"
 })
 
