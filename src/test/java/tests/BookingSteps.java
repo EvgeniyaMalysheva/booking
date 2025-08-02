@@ -50,21 +50,7 @@ public class BookingSteps {
         return bookingIds;
     }
 
-    @Step("Запрос информации по существующему id бронирования")
-    public BookingModel getExistingBookingById() {
-        List<BookingIdsResponseModel> listOfBookings = getBookingIds();
-        int id = Integer.parseInt(listOfBookings.get(0).getBookingId());
-        return given(RequestSpec)
-                .when()
-                .pathParam("id", id)
-                .get(BOOKING_END_POINT + "/{id}")
-                .then()
-                .spec(ResponseSpec)
-                .statusCode(HTTP_OK)
-                .extract().as(BookingModel.class);
-    }
-
-    @Step("Запрос информации по существующему id бронирования")
+    @Step("Получение существующего id бронирования")
     public int getExistingBookingId() {
         List<BookingIdsResponseModel> listOfBookings = getBookingIds();
         return Integer.parseInt(listOfBookings.get(0).getBookingId());

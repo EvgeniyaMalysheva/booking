@@ -1,9 +1,12 @@
 package tests;
 
+import io.qameta.allure.Owner;
 import models.responses.CreateBookingResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@Owner("Evgeniya Malysheva")
+@DisplayName("Управление бронированиями")
 public class BookingProcessTests extends TestBase{
 
     @Test
