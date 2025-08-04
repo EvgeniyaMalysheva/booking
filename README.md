@@ -1,4 +1,4 @@
-<a href="https://restful-booker.herokuapp.com/apidoc/index.html"> <img src="media/logo.png" width="400" height="200"> 
+<a href="https://restful-booker.herokuapp.com/apidoc/index.html"> <img src="media/logo.png" width="250" height="200"> 
 <h2>Проект по автоматизации тестирования API для <a href="https://restful-booker.herokuapp.com/apidoc/index.html">api-Booking</a></h2>
 Restful Booker API - это тренажёр API, основанный на процессах бронирования отелей. Поддерживает все основные CRUD-операции.
 
@@ -35,14 +35,14 @@ Jenkins — удобный инструмент для автоматизаци�
 </p>
 
 
-## :ballot_box_with_check: Параметры сборки в Jenkins:
+### :ballot_box_with_check: Параметры сборки в Jenkins:
 
 - login
 - password
 - baseURI (по умолчанию установлен адрес [api-Booking](https://restful-booker.herokuapp.com/apidoc/index.html))
 
 
-## Команда для запуска из терминала
+### Команда для запуска из терминала
 Локальный запуск
 ```bash
 gradle clean test
