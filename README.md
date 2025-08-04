@@ -1,5 +1,6 @@
 <a href="https://restful-booker.herokuapp.com/apidoc/index.html"> <img src="media/logo.png" width="400" height="200"> 
-<h2>Проект по автоматизации тестирования API для тренажера <a href="https://restful-booker.herokuapp.com/apidoc/index.html">api-Booking</a></h2>
+<h2>Проект по автоматизации тестирования API для <a href="https://restful-booker.herokuapp.com/apidoc/index.html">api-Booking</a></h2>
+Restful Booker API - это тренажёр API, основанный на процессах бронирования отелей. Поддерживает все основные CRUD-операции.
 
 ## ☑️ Содержание:
 
@@ -27,7 +28,7 @@
 - Проверка работоспособности (ping) сервиса
 
 ## <img alt="Jenkins" height="25" src="media/Jenkins.svg" width="25"/> Сборка в [Jenkins](https://jenkins.autotests.cloud/job/C35_Evgenia_Malysheva_booking/)
-
+Jenkins — удобный инструмент для автоматизации сборки, тестирования и развёртывания ПО.
 
 <p align="center">  
 <img src="media/JenkinsBuild.jpg" alt="Jenkins" width="950"/></a>  
@@ -56,9 +57,10 @@ test
 ```
 
 ## <img alt="Allure" height="25" src="media/Allure.svg" width="25"/></a>  <a name="Allure"></a>Allure [Report](https://jenkins.autotests.cloud/job/C35_Evgenia_Malysheva_booking/allure/)	</a>
+Allure Report - это инструмент для генерации и представления отчетов о результатах автоматизированного тестирования.
+Тут можно быстро оценить результаты тестового прогона, посмотреть на шаги теста и пробежаться по приложенным аттачам (скрины, логи, видео и т.п.)
 
-
-## Основная страница отчёта
+### Основная страница отчёта
 
 <p align="center">  
 <img title="Allure Overview Dashboard" src="media/AllureReport.jpg" width="850">  
@@ -66,9 +68,10 @@ test
 
 
 ## <img alt="AllureTestOps" height="25" src="media/AllureTestOps.jpg" width="25"/></a>  <a name="AllureTestOps"></a>Allure [TestOps](https://allure.autotests.cloud/project/4853)	</a>
+Allure TestOps — это мощный инструмент для управления тестированием, который помогает автоматизировать и оптимизировать процессы тестирования.
+Здесь смотрим, контролируем, управляем, все показываем менеджеру и коллегам
 
-
-## Основная страница отчёта
+### Основная страница отчёта
 
 <p align="center">  
 <img title="Allure TestOps Overview Dashboard" src="media/AllureTestOpsDashboard.jpg" width="850">  
@@ -76,6 +79,7 @@ test
 
 ____
 ## <img alt="Allure" height="25" src="media/Telegram.svg" width="25"/></a> Уведомление в Telegram при помощи бота
+О - оперативность. После окончания тестового прогона сразу получаем нотификацию в Телеграм с результатами
 ____
 <p align="center">  
 <img title="Allure Overview Dashboard" src="media/tgAllert.jpg" width="550">  
