@@ -9,14 +9,14 @@ import static io.restassured.RestAssured.with;
 import static io.restassured.filter.log.LogDetail.*;
 
 public class BookingSpecs {
-    public static RequestSpecification RequestSpec = with()
+    public static RequestSpecification requestSpec = with()
             .filter(withCustomTemplates())
             .log().uri()
             .log().method()
             .log().body()
             .contentType("application/json");
 
-    public static ResponseSpecification ResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
             .log(STATUS)
             .log(BODY)
             .build();

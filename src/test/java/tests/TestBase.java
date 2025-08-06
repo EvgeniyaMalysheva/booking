@@ -6,6 +6,7 @@ import io.restassured.RestAssured;
 import models.responses.BookingModel;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import steps.BookingSteps;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 

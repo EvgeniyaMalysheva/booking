@@ -1,4 +1,4 @@
-package tests;
+package steps;
 
 import config.BookingConfig;
 import config.ConfigReader;
@@ -11,9 +11,9 @@ import java.util.List;
 import static io.restassured.RestAssured.given;
 import static java.net.HttpURLConnection.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static specs.BookingSpecs.RequestSpec;
-import static specs.BookingSpecs.ResponseSpec;
-import static tests.TestData.*;
+import static specs.BookingSpecs.requestSpec;
+import static specs.BookingSpecs.responseSpec;
+import static data.TestData.*;
 
 public class BookingSteps {
     private static final BookingConfig config = ConfigReader.Instance.read();
@@ -24,12 +24,12 @@ public class BookingSteps {
                 ? new LoginBodyModel(config.getLogin(), config.getPassword())
                 : new LoginBodyModel(System.getProperty("login"), System.getProperty("password"));
 
-        LoginResponseModel token = given(RequestSpec)
+        LoginResponseModel token = given(requestSpec)
                 .body(authData)
                 .when()
                 .post(GENERATE_TOKEN_END_POINT)
                 .then()
-                .spec(ResponseSpec)
+                .spec(responseSpec)
                 .statusCode(HTTP_OK)
                 .extract().as(LoginResponseModel.class);
 
@@ -39,11 +39,11 @@ public class BookingSteps {
     @Step("Запрос всех существующих ID бронирований")
     public List<BookingIdsResponseModel> getBookingIds() {
 
-        List<BookingIdsResponseModel> bookingIds = given(RequestSpec)
+        List<BookingIdsResponseModel> bookingIds = given(requestSpec)
                 .when()
                 .get(BOOKING_END_POINT)
                 .then()
-                .spec(ResponseSpec)
+                .spec(responseSpec)
                 .statusCode(HTTP_OK)
                 .extract()
                 .body()
@@ -62,24 +62,24 @@ public class BookingSteps {
 
     @Step("Запрос информации по существующему id бронирования")
     public BookingModel getBookingById(int id) {
-        return given(RequestSpec)
+        return given(requestSpec)
                 .when()
                 .pathParam("id", id)
                 .get(BOOKING_END_POINT + "/{id}")
                 .then()
-                .spec(ResponseSpec)
+                .spec(responseSpec)
                 .statusCode(HTTP_OK)
                 .extract().as(BookingModel.class);
     }
 
     @Step("Запрос информации по несуществующему id бронирования")
     public void get404ForNotExistingBooking(int id) {
-        given(RequestSpec)
+        given(requestSpec)
                 .when()
                 .pathParam("id", id)
                 .get(BOOKING_END_POINT + "/{id}")
                 .then()
-                .spec(ResponseSpec)
+                .spec(responseSpec)
                 .statusCode(HTTP_NOT_FOUND);
     }
 
@@ -93,12 +93,12 @@ public class BookingSteps {
 
     @Step("Создание бронирования")
     public CreateBookingResponseModel createBooking(BookingModel newBookingData) {
-        return given(RequestSpec)
+        return given(requestSpec)
                 .body(newBookingData)
                 .when()
                 .post(BOOKING_END_POINT)
                 .then()
-                .spec(ResponseSpec)
+                .spec(responseSpec)
                 .statusCode(HTTP_OK)
                 .extract().as(CreateBookingResponseModel.class);
     }
@@ -121,13 +121,13 @@ public class BookingSteps {
     @Step("Удаление бронирования")
     public BookingSteps deleteBookingData(int id) {
         String tokenValue = createToken();
-        given(RequestSpec)
+        given(requestSpec)
                 .when()
                 .header("Cookie", "token=" + tokenValue)
                 .pathParam("id", id)
                 .delete(BOOKING_END_POINT + "/{id}")
                 .then()
-                .spec(ResponseSpec)
+                .spec(responseSpec)
                 .statusCode(HTTP_CREATED);
 
         return this;
@@ -135,11 +135,11 @@ public class BookingSteps {
 
     @Step("Пингуем сервис")
     public void pingService() {
-        given(RequestSpec)
+        given(requestSpec)
                 .when()
                 .get(PING_END_POINT)
                 .then()
-                .spec(ResponseSpec)
+                .spec(responseSpec)
                 .statusCode(HTTP_CREATED);
     }
 
